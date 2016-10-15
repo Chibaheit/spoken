@@ -1,0 +1,14 @@
+'menu': [
+  {
+    label: 'Packages'
+    submenu: [
+      label: 'Spoken',
+      submenu: [
+        {
+          label: 'Spoken'
+          command: 'spoken:trigger'
+        }
+      ]
+    ]
+  }
+]

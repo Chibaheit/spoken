@@ -1,0 +1,24 @@
+{
+  "name": "spoken",
+  "version": "0.0.1",
+  "description": "Spoken Coder.",
+  "main": "./lib/spoken",
+  "dependencies": {
+    "atom-space-pen-views": "^2.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chibaheit/spoken.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Chibaheit/spoken/issues"
+  },
+  "homepage": "https://github.com/Chibaheit/spoken#readme"
+}
