@@ -16,12 +16,18 @@ x = 0
 recording = false
 
 similarity = (a, b) ->
-	len = Math.max a.length, b.length
+	sa = a.split(' ')
+	sb = b.split(' ')
+	len = Math.max sa.length, sb.length
 	cnt = 0
-	for i in [0..len]
-		if a[i] == b[i]
-			cnt += 1
-	return (1.0 * cnt / len) >= 0.8
+	for i in [0...len]
+		ssa = if sa[i] then sa[i] else ""
+		ssb = if sb[i] then sb[i] else ""
+		slen = Math.max ssa.length, ssb.length
+		for j in [0...slen]
+			if ssa[j] and ssb[j] and ssa[j] == ssb[j]
+				cnt += 1
+	return (1.0 * cnt / Math.max(a.length, b.length)) >= 0.5
 
 class Spoken
 
@@ -45,11 +51,11 @@ class Spoken
 			x += 1
 
 	onmessage: (err, data) ->
+		console.log data
 		if err
 			console.log err
 		else if data isnt {} and data.decoded
 			string = data.decoded
-			console.log string
 			if similarity string, "include standard input and output file"
 				atom.workspace.getActiveTextEditor().insertText('#include <stdio.h>\n')
 			else if similarity string, "define number a equals one number b equals two"
