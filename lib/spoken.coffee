@@ -42,9 +42,6 @@ class Spoken
 		else
 			recording = false
 			Getter.stop()
-			data = {}
-			data.decoded = lines[x]
-			@onmessage null, data
 			x += 1
 
 	onmessage: (err, data) ->
@@ -52,7 +49,8 @@ class Spoken
 			console.log err
 		else if data isnt {} and data.decoded
 			string = data.decoded
-			if similarity string, "include standard input and outputs file"
+			console.log string
+			if similarity string, "include standard input and output file"
 				atom.workspace.getActiveTextEditor().insertText('#include <stdio.h>\n')
 			else if similarity string, "define number a equals one number b equals two"
 				atom.workspace.getActiveTextEditor().insertText('int a = 1, b = 2;\n')
